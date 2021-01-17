@@ -51,7 +51,7 @@ func main() {
 	for _, test := range tests {
 		result := twoSum(test.nums, test.target)
 		sort.Ints(result)
-        sort.Ints(test.result)
+		sort.Ints(test.result)
 		fmt.Println(reflect.DeepEqual(result, test.result))
 	}
 }
