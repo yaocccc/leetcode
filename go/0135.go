@@ -20,7 +20,7 @@ type Test struct {
 	result  int
 }
 
-func candy(ratings []int) int {
+func f1(ratings []int) int {
 	result := len(ratings)
 	if len(ratings) < 2 {
 		return result
@@ -44,20 +44,11 @@ func candy(ratings []int) int {
 
 func main() {
 	tests := []Test{
-		{
-			ratings: []int{1, 0, 2},
-			result:  5,
-		},
-		{
-			ratings: []int{1, 2, 2},
-			result:  4,
-		},
-		{
-			ratings: []int{1, 2, 87, 87, 87, 2, 1},
-			result:  13,
-		},
+		{ratings: []int{1, 0, 2}, result: 5},
+		{ratings: []int{1, 2, 2}, result: 4},
+		{ratings: []int{1, 2, 87, 87, 87, 2, 1}, result: 13},
 	}
 	for _, test := range tests {
-		fmt.Println(candy(test.ratings) == test.result)
+		fmt.Println(f1(test.ratings) == test.result)
 	}
 }

@@ -17,7 +17,7 @@ type Test struct {
 	result []int
 }
 
-func twoSum(nums []int, target int) []int {
+func f1(nums []int, target int) []int {
 	numIndexMap := make(map[int]int)
 	for i := 0; i < len(nums); i++ {
 		diff := target - nums[i]
@@ -32,24 +32,12 @@ func twoSum(nums []int, target int) []int {
 
 func main() {
 	tests := []Test{
-		{
-			nums:   []int{2, 7, 11, 15},
-			target: 9,
-			result: []int{0, 1},
-		},
-		{
-			nums:   []int{3, 2, 4},
-			target: 6,
-			result: []int{1, 2},
-		},
-		{
-			nums:   []int{3, 3},
-			target: 6,
-			result: []int{0, 1},
-		},
+		{nums: []int{2, 7, 11, 15}, target: 9, result: []int{0, 1}},
+		{nums: []int{3, 2, 4}, target: 6, result: []int{1, 2}},
+		{nums: []int{3, 3}, target: 6, result: []int{0, 1}},
 	}
 	for _, test := range tests {
-		result := twoSum(test.nums, test.target)
+		result := f1(test.nums, test.target)
 		sort.Ints(result)
 		sort.Ints(test.result)
 		fmt.Println(reflect.DeepEqual(result, test.result))

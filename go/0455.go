@@ -26,7 +26,7 @@ type Test struct {
 	result int
 }
 
-func findContentChildren(g []int, s []int) int {
+func f1(g []int, s []int) int {
 	sort.Ints(g)
 	sort.Ints(s)
 	children := 0
@@ -42,18 +42,10 @@ func findContentChildren(g []int, s []int) int {
 
 func main() {
 	tests := []Test{
-		{
-			g:      []int{1, 2, 3},
-			s:      []int{1, 1},
-			result: 1,
-		},
-		{
-			g:      []int{1, 2},
-			s:      []int{1, 2, 3},
-			result: 2,
-		},
+		{g: []int{1, 2, 3}, s: []int{1, 1}, result: 1},
+		{g: []int{1, 2}, s: []int{1, 2, 3}, result: 2},
 	}
 	for _, test := range tests {
-		fmt.Println(findContentChildren(test.g, test.s) == test.result)
+		fmt.Println(f1(test.g, test.s) == test.result)
 	}
 }
