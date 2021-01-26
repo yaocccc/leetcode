@@ -9,40 +9,39 @@ package main
 import "fmt"
 
 type Test struct {
-    flowerbed      []int
-    n              int
-    result         bool
+	flowerbed []int
+	n         int
+	result    bool
 }
 
 func f1(flowerbed []int, n int) bool {
-    for i := 0; i < len(flowerbed); i++ {
-        left, right := 0, len(flowerbed) - 1
-        if (i - 1 > left) {
-            left = i - 1
-        }
-        if (i + 1 < right) {
-            right = i + 1
-        }
-        if flowerbed[left] == 1 || flowerbed[i] == 1 || flowerbed[right] == 1 {
-            continue
-        }
-        flowerbed[i] = 1
-        n--
-        if n <= 0 {
-            return true
-        }
-    }
-    return n <= 0
+	for i := 0; i < len(flowerbed); i++ {
+		left, right := 0, len(flowerbed)-1
+		if i-1 > left {
+			left = i - 1
+		}
+		if i+1 < right {
+			right = i + 1
+		}
+		if flowerbed[left] == 1 || flowerbed[i] == 1 || flowerbed[right] == 1 {
+			continue
+		}
+		flowerbed[i] = 1
+		n--
+		if n <= 0 {
+			return true
+		}
+	}
+	return n <= 0
 }
 
 func main() {
-    tests := []Test {
-        { flowerbed: []int {1, 0, 0, 0, 1}, n: 1, result: true },
-        { flowerbed: []int {1, 0, 0, 0, 1}, n: 2, result: false },
-        { flowerbed: []int {0, 0, 1, 0, 1}, n: 1, result: true },
-        { flowerbed: []int {0, 0, 0, 0, 1, 0, 1}, n: 0, result: true },
-
-    }
+	tests := []Test{
+		{flowerbed: []int{1, 0, 0, 0, 1}, n: 1, result: true},
+		{flowerbed: []int{1, 0, 0, 0, 1}, n: 2, result: false},
+		{flowerbed: []int{0, 0, 1, 0, 1}, n: 1, result: true},
+		{flowerbed: []int{0, 0, 0, 0, 1, 0, 1}, n: 0, result: true},
+	}
 	for _, test := range tests {
 		fmt.Println(f1(test.flowerbed, test.n) == test.result)
 	}
