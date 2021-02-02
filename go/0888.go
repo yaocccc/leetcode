@@ -15,31 +15,25 @@ type Test struct {
 	A, B, result []int
 }
 
-func sum(nums []int) (sum int) {
-	for _, num := range nums {
-		sum += num
-	}
-	return
-}
-
-func includes(nums []int, target int) bool {
-	for _, num := range nums {
-		if num == target {
-			return true
-		}
-	}
-	return false
-}
-
 func f1(A, B []int) (result []int) {
-	diff := sum(B) - sum(A)
-	for _, num := range A {
-		target := diff/2 + num
-		if includes(B, target) {
-			return []int{num, target}
+	sumA := 0
+	setA := map[int]struct{}{}
+	for _, v := range A {
+		sumA += v
+		setA[v] = struct{}{}
+	}
+	sumB := 0
+	for _, v := range B {
+		sumB += v
+	}
+	delta := (sumA - sumB) / 2
+	for i := 0; ; i++ {
+		y := B[i]
+		x := y + delta
+		if _, has := setA[x]; has {
+			return []int{x, y}
 		}
 	}
-	return
 }
 
 func main() {
