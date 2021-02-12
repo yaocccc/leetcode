@@ -4,6 +4,7 @@
  *  如果不存在公共前缀，返回空字符串 ""。
  */
 const f1 = (strs: string[]): string => {
+    if (!strs.length) return "";
     const minlen = Math.min(...strs.map(str => str.length));
     let result = "";
     for (let i = 0; i < minlen; i++) {
