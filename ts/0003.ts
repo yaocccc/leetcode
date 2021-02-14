@@ -17,6 +17,14 @@ const f1 = (s: string): number => {
     return result;
 };
 
-export {
-    f1
-}
+const tests = [
+    { s: '', result: 0 },
+    { s: 'bbbbb', result: 1 },
+    { s: 'abcabcbb', result: 3 }
+];
+
+import { assert } from './test';
+console.log(
+    tests.every(test => assert(f1(test.s), test.result))
+);
+

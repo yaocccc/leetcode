@@ -24,6 +24,12 @@ const f1 = (g: number[], s: number[]): number => {
     return children;
 };
 
-export {
-    f1
-}
+const tests = [
+    { g: [1, 2, 3], s: [1, 1], result: 1 },
+    { g: [1, 2], s: [1, 2, 3], result: 2 },
+];
+
+import { assert } from './test';
+console.log(
+    tests.every(test => assert(f1(test.g, test.s), test.result))
+);

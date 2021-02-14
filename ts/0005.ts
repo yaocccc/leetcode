@@ -22,6 +22,14 @@ const f1 = (s: string): string => {
     };
 };
 
-export {
-    f1
-}
+const tests = [
+    {s: "babad", result: "aba"},
+    {s: "cbbd", result: "bb"},
+    {s: "a", result: "a"},
+    {s: "ac", result: "c"},
+];
+
+import { assert } from './test';
+console.log(
+    tests.every(test => assert(f1(test.s), test.result))
+);

@@ -21,8 +21,15 @@ const f1 = (areas: number[][]): number => {
         else pre = areas[i][1];
     }
     return result;
-}
+};
 
-export {
-    f1
-}
+const tests = [
+    { areas: [ [1, 2], [2, 3], [3, 4], [1, 3] ], result: 1 },
+    { areas: [ [1, 2], [1, 2], [1, 2] ], result: 2 },
+    { areas: [ [1, 2], [2, 3] ], result: 0 },
+];
+
+import { assert } from './test';
+console.log(
+    tests.every(test => assert(f1(test.areas), test.result))
+);

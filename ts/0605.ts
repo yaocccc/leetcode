@@ -13,6 +13,14 @@ const f1 = (flowerbed: number[], n: number): boolean => {
     return n <= 0;
 };
 
-export {
-    f1
-}
+const tests = [
+    { flowerbed: [1, 0, 0, 0, 1], n: 1, result: true },
+    { flowerbed: [1, 0, 0, 0, 1], n: 2, result: false },
+    { flowerbed: [0, 0, 1, 0, 1], n: 1, result: true },
+    { flowerbed: [0, 0, 0, 0, 1, 0, 1], n: 0, result: true },
+];
+
+import { assert } from './test';
+console.log(
+    tests.every(test => assert(f1(test.flowerbed, test.n), test.result))
+);

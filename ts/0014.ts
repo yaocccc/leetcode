@@ -15,6 +15,12 @@ const f1 = (strs: string[]): string => {
     return result;
 };
 
-export {
-    f1
-}
+const tests = [
+    {strs: ["flower","flow","flight"], result: "fl"},
+    {strs: ["dog","racecar","car"], result: ""},
+];
+
+import { assert } from './test';
+console.log(
+    tests.every(test => assert(f1(test.strs), test.result))
+);

@@ -20,8 +20,15 @@ const f1 = (s: string, numRows: number): string => {
         line += diff;
     }
     return resultArr.reduce((str, item) => str += item, '');
-}
+};
 
-export {
-    f1
-}
+const tests = [
+    {s: "PAYPALISHIRING", numRows: 3, result: "PAHNAPLSIIGYIR"},
+    {s: "PAYPALISHIRING", numRows: 4, result: "PINALSIGYAHRPI"},
+    {s: "A", numRows: 1, result: "A"},
+];
+
+import { assert } from './test';
+console.log(
+    tests.every(test => assert(f1(test.s, test.numRows), test.result))
+);

@@ -17,7 +17,5 @@
     "downlevelIteration": true,
     "declaration": false,
     "esModuleInterop": true
-  },
-  "includes": ["./**"],
-  "exclude": ["test"]
+  }
 }

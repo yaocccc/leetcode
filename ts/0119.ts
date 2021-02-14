@@ -15,6 +15,13 @@ const f1 = (rowIndex: number): number[] => {
     return result;
 };
 
-export {
-    f1
-}
+const tests = [
+    { k: 3, result: [1, 3, 3, 1]},
+    { k: 4, result: [1, 4, 6, 4, 1]},
+    { k: 5, result: [1, 5, 10, 10, 5, 1]},
+];
+
+import { assert } from './test';
+console.log(
+    tests.every(test => assert(f1(test.k), test.result))
+);

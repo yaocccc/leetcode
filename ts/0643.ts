@@ -11,8 +11,13 @@ const f1 = (nums: number[], k: number): number => {
         max = Math.max(max, sum);
     }
     return max / k;
-}
-
-export {
-    f1
 };
+
+const tests = [
+    { nums: [1, 12, -5, -6, 50, 3], k: 4, result: 12.75 }
+];
+
+import { assert } from './test';
+console.log(
+    tests.every(test => assert(f1(test.nums, test.k), test.result))
+);

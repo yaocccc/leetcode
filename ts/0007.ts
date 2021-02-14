@@ -9,7 +9,7 @@ const f1 = (x: number): number => {
     for (const char of xStr) str = char + str;
     let result = zf * Number(str);
     return result > 2147483647 || result < -2147483648 ? 0 : result;
-}
+};
 
 const f2 = (x: number): number => {
     let y = 0;
@@ -19,9 +19,17 @@ const f2 = (x: number): number => {
         x = x / 10 - x % 10 / 10;
     }
     return y;
-}
+};
 
-export {
-    f1,
-    f2
-}
+const tests = [
+    {x: 123, result: 321},
+    {x: -123, result: -321},
+    {x: 120, result: 21},
+    {x: 0, result: 0},
+];
+
+import { assert } from './test';
+console.log(
+    tests.every(test => assert(f1(test.x), test.result)),
+    tests.every(test => assert(f2(test.x), test.result))
+);

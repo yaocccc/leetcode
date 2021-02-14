@@ -27,7 +27,12 @@ const f2 = (nums: number[]): number[] => {
     return result;
 };
 
-export {
-    f1,
-    f2
-}
+const tests = [
+    {nums: [4,3,2,7,8,2,3,1], result: [5, 6]},
+];
+
+import { assert } from './test';
+console.log(
+    tests.every(test => assert(f1([...test.nums]), test.result)),
+    tests.every(test => assert(f2([...test.nums]), test.result))
+);

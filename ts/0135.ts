@@ -24,6 +24,13 @@ const f1 = (ratings: number[]): number => {
     return candies.reduce((sum, num) => sum + num);
 };
 
-export {
-    f1
-}
+const tests = [
+    { ratings: [1, 0, 2], result: 5 },
+    { ratings: [1, 2, 2], result: 4 },
+    { ratings: [1,2,87,87,87,2,1], result: 13}
+];
+
+import { assert } from './test';
+console.log(
+    tests.every(test => assert(f1(test.ratings), test.result))
+);
