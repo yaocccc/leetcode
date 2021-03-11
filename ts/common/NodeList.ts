@@ -206,7 +206,7 @@ export class LinkedList<T = number> {
         }
     };
 
-    public unshift(): T {
+    public shift(): T {
         try {
             const res = this.head.val;
             this.head = this.getNode(1);
@@ -235,7 +235,7 @@ export class LinkedList<T = number> {
         });
     };
 
-    public shift(val: T): void {
+    public unshift(val: T): void {
         let newNode = new ListNode<T>(val);
         newNode.next = this.head;
         this.head = newNode;
@@ -244,7 +244,7 @@ export class LinkedList<T = number> {
 
     public insert(index: number, val: T): void {
         if (index === 0) {
-            this.shift(val);
+            this.unshift(val);
         } else {
             let newNode = new ListNode<T>(val);
             let head = this.getNode(--index);
