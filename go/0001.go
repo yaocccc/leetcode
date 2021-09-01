@@ -19,13 +19,12 @@ type Test struct {
 
 func f1(nums []int, target int) []int {
 	numIndexMap := make(map[int]int)
-	for i := 0; i < len(nums); i++ {
-		diff := target - nums[i]
-		index, ok := numIndexMap[diff]
-		if ok {
+	for i, item := range nums {
+		diff := target - item
+		if index, ok := numIndexMap[diff]; ok {
 			return []int{i, index}
 		}
-		numIndexMap[nums[i]] = i
+		numIndexMap[item] = i
 	}
 	return []int{}
 }

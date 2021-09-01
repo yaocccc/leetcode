@@ -24,7 +24,4 @@ const tests = [
 ];
 
 import { assert } from './test';
-console.log(
-    tests.every(test => assert(f1(test.s), test.result))
-);
-
+console.log(tests.every((test) => assert(f1(test.s), test.result)));

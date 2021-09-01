@@ -1,4 +1,4 @@
-/* 
+/*
  *  简单 两数之和
  *  给定nums target
  *  从nums中找出两者相加 == target 的索引值
@@ -20,6 +20,4 @@ const tests = [
 ];
 
 import { assert } from './test';
-console.log(
-    tests.every(test => assert(f1(test.nums, test.target), test.result))
-);
+console.log(tests.every((test) => assert(f1(test.nums, test.target), test.result)));
