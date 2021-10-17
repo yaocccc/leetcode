@@ -11,34 +11,34 @@ import (
 	"sort"
 )
 
-type Test struct {
+type T struct {
 	nums   []int
 	target int
 	result []int
 }
 
 func f1(nums []int, target int) []int {
-	numIndexMap := make(map[int]int)
-	for i, item := range nums {
-		diff := target - item
-		if index, ok := numIndexMap[diff]; ok {
-			return []int{i, index}
+	m := make(map[int]int)
+	for k, v := range nums {
+		if idx, ok := m[target-v]; ok {
+			return []int{k, idx}
 		}
-		numIndexMap[item] = i
+		m[v] = k
 	}
-	return []int{}
+	return nil
 }
 
 func main() {
-	tests := []Test{
-		{nums: []int{2, 7, 11, 15}, target: 9, result: []int{0, 1}},
-		{nums: []int{3, 2, 4}, target: 6, result: []int{1, 2}},
-		{nums: []int{3, 3}, target: 6, result: []int{0, 1}},
+	ts := []T{
+		{[]int{2, 7, 11, 15}, 9, []int{0, 1}},
+		{[]int{3, 2, 4}, 6, []int{1, 2}},
+		{[]int{3, 3}, 6, []int{0, 1}},
 	}
-	for _, test := range tests {
-		result := f1(test.nums, test.target)
+
+	for _, t := range ts {
+		result := f1(t.nums, t.target)
 		sort.Ints(result)
-		sort.Ints(test.result)
-		fmt.Println(reflect.DeepEqual(result, test.result))
+		sort.Ints(t.result)
+		fmt.Println(reflect.DeepEqual(result, t.result))
 	}
 }

@@ -8,39 +8,40 @@ package main
 
 import "fmt"
 
-type Test struct {
+type T struct {
 	height []int
 	result int
 }
 
-func f1(height []int) (result int) {
-	l := 0
-	r := len(height) - 1
+func f1(height []int) int {
+	result, l, r := 0, 0, len(height)-1
 	for l < r {
-		tempHeight := height[l]
-		if height[r] < tempHeight {
-			tempHeight = height[r]
-		}
-		if result < (r-l)*tempHeight {
-			result = (r - l) * tempHeight
-		}
+		width, high := r-l, 0
 		if height[l] < height[r] {
+			high = height[l]
 			l++
 		} else {
+			high = height[r]
 			r--
 		}
+		temp := width * high
+		if temp > result {
+			result = temp
+		}
 	}
-	return
+	return result
 }
 
 func main() {
-	tests := []Test{
-		{height: []int{1, 8, 6, 2, 5, 4, 8, 3, 7}, result: 49},
-		{height: []int{1, 1}, result: 1},
-		{height: []int{4, 3, 2, 1, 4}, result: 16},
-		{height: []int{1, 2, 1}, result: 2},
+	ts := []T{
+		{[]int{1, 8, 6, 2, 5, 4, 8, 3, 7}, 49},
+		{[]int{1, 1}, 1},
+		{[]int{4, 3, 2, 1, 4}, 16},
+		{[]int{1, 2, 1}, 2},
 	}
-	for _, test := range tests {
-		fmt.Println(f1(test.height) == test.result)
+
+	for _, t := range ts {
+		result := f1(t.height)
+		fmt.Println(result == t.result)
 	}
 }
